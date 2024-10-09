@@ -12,29 +12,19 @@ export async function convert(buffer) {
     // let ans = convertto2d(twoD, data.width, data.height, rawBytes.data);
 
     const div = rawBytes.data.length / 2;
-    // for (let i = 0; i < rawBytes.data.length; i += 4) {
-    //   if (i <= div) {
-    //     rawBytes.data[i] = 145;
-    //     rawBytes.data[i + 1] = 26;
-    //     rawBytes.data[i + 2] = 200;
-    //     rawBytes.data[i + 3] = Math.floor(0.9 * 255);
-    //   } else {
-    //     rawBytes.data[i] = 84;
-    //     rawBytes.data[i + 1] = 135;
-    //     rawBytes.data[i + 2] = 21;
-    //     rawBytes.data[i + 3] = Math.floor(0.9 * 255);
-    //   }
-    //   }
-      
-      rawBytes.data[0] = 200;
-      rawBytes.data[ 1] = 212;
-      rawBytes.data[2] = 43;
-      rawBytes.data[3] = Math.floor(1 * 255);
-
-      rawBytes.data[4] = 145;
-      rawBytes.data[5] = 26;
-      rawBytes.data[6] = 200;
-      rawBytes.data[7] = Math.floor(0.9 * 255);
+    for (let i = 0; i < rawBytes.data.length; i += 4) {
+      if (i <= div) {
+        rawBytes.data[i] = 145;
+        rawBytes.data[i + 1] = 26;
+        rawBytes.data[i + 2] = 200;
+        rawBytes.data[i + 3] = Math.floor(0.9 * 255);
+      } else {
+        rawBytes.data[i] = 84;
+        rawBytes.data[i + 1] = 135;
+        rawBytes.data[i + 2] = 21;
+        rawBytes.data[i + 3] = Math.floor(0.9 * 255);
+      }
+    }
 
     await sharp(rawBytes.data, {
       raw: {
