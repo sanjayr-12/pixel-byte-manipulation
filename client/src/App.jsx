@@ -21,7 +21,6 @@ function App() {
       setPending(true);
       const response = await axios.post("http://localhost:4000/img", formData);
       console.log(response.data);
-      
     } catch (error) {
       console.log("Error uploading image:", error);
     } finally {
